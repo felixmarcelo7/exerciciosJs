@@ -7,16 +7,15 @@ frm.addEventListener("submit", (e) => {
     const nome = frm.inNome.value;
     const altura = Number(frm.inAltura.value);
     const masculino = frm.inMasculino.checked;
+    let pesoIdeal;
 
     if(masculino) {
-        const pesoIdeal = 22 * (Math.pow(altura, 2)); //também pode ser feito com (**) ex: 22 * altura ** 2
-        resp.innerText = `${nome}: Seu peso ideal é ${pesoIdeal.toFixed(3)} Kg`;
+        pesoIdeal = 22 * (Math.pow(altura, 2)); //também pode ser feito com (**) ex: 22 * altura ** 2
     } else {
-        const pesoIdeal = 21 * (Math.pow(altura, 2)); 
-        resp.innerText = `${nome}: Seu peso ideal é ${pesoIdeal.toFixed(3)} Kg`;
+        pesoIdeal = 21 * (Math.pow(altura, 2));  
     };
     
+    resp.innerText = `${nome}: Seu peso ideal é ${pesoIdeal.toFixed(3)} Kg`;
+
     frm.btLimpar.addEventListener("click", () => resp.innerText = "");
 });
-
-    
