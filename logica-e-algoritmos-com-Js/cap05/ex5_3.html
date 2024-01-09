@@ -20,8 +20,8 @@
 
         let resp = 2;
 
-        for(let i = 2; i <= num / 2; i++) {
-            resp += ", " + i * 2;
+        for(let i = 4; i <= num; i = i + 2) {
+            resp += ", " + i;
         };
 
         alert(`Pares entre 1 e ${num}: ${resp}`);
