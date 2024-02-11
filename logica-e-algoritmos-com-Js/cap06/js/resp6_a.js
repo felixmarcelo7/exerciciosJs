@@ -28,19 +28,19 @@ frm.btListar.addEventListener("click", () => {
 });
 
 frm.btMontar.addEventListener("click", () => {
-    if(listaClubes.length % 2 != 0) {
-        alert("O total da Lista de Clubes precisa ser par");
-        return;
-    } 
+  if (listaClubes.length % 2 != 0) {
+    alert("O total da Lista de Clubes precisa ser par");
+    return;
+  }
 
-    const copiaClubes = [...listaClubes];
-    copiaClubes.reverse();
+  const copiaClubes = [...listaClubes];
+  copiaClubes.reverse();
 
-    let listaConf = "";
-    
-    for(let i = 0; i < copiaClubes.length / 2; i++) {
-        listaConf += `${listaClubes[i]} x ${copiaClubes[i]}\n`;
-    }
+  let listaConf = "";
 
-    resp.innerText = listaConf;
+  for (let i = 0; i < copiaClubes.length / 2; i++) {
+    listaConf += `${listaClubes[i]} x ${copiaClubes[i]}\n`;
+  }
+
+  resp.innerText = listaConf;
 });
