@@ -26,10 +26,9 @@ frm.addEventListener("submit", (e) => {
     valorJuros = valorConta * TAXA_JUROS * diasAtraso;
   }
 
-  const valorTotal = valorConta + valorMulta + valorJuros
+  const valorTotal = valorConta + valorMulta + valorJuros;
 
   frm.outMulta.value = valorMulta.toFixed(2);
   frm.outJuros.value = valorJuros.toFixed(2);
   frm.outTotal.value = valorTotal.toFixed(2);
-
 });
