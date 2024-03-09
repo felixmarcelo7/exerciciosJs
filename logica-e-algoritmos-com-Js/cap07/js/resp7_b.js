@@ -14,7 +14,7 @@ frm.addEventListener("submit", (e) => {
     if (frase2.at(i) === fraseInvertida.at(i)) {
         flag = flag;
     } else {
-        flag = "não é Palíndomo"
+        flag = "não é Palíndomo";
     }
   }
 
