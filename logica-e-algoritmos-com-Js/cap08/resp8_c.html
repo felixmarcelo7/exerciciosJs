@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="shortcut icon" href="/logica-e-algoritmos-com-Js/cap04/img/livrojs.png" type="image/x-icon">
+    <title>Exercício 8.c</title>
+</head>
+
+<body>
+    <img src="/logica-e-algoritmos-com-Js/cap04/img/exerc.jpg" alt="Exercício" class="normal">
+    <h1>Veterinária Avenida</h1>
+    <form>
+        <p>Valor da Vacina:
+            <input type="number" id="inValor" min="0.01" step="0.01" required autofocus>
+        </p>
+        <p>Possui Convênio:
+            <input type="radio" id="rbSim" name="rbConvenio">
+            <label for="rbSim">Sim</label>
+
+            <input type="radio" id="rbNao" name="rbConvenio" checked>
+            <label for="rbNao">Não</label>
+        </p>
+        <p id="convenio" class="oculta">Convênio:
+            <select id="optsConvenio">
+                <option value="amigoAnimais">Amigo do Animais</option>
+                <option value="saudeAnimal">Saúde Animal</option>
+            </select>
+        </p>
+        <input type="submit" value="Calcular Desconto">
+    </form>
+    <h3></h3>
+    <script src="./js/resp8_c.js"></script>
+</body>
+
+</html>

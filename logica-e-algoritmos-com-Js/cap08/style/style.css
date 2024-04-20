@@ -6,5 +6,5 @@
  select {width: 150px;}
  .detalhes {width: 380px;}
  .oculta {display: none;}
- .exibe {display: inline;}
+ .exibe {display: block;}
  
