@@ -8,7 +8,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./style/style.css">
     <link rel="shortcut icon" href="../cap04/img/livrojs.png" type="image/x-icon">
-    <title>Exercício 9.b</title>
+    <title>Exercício 9.c</title>
 </head>
 
 <body>
@@ -18,18 +18,20 @@
                 <img src="../cap04/img/exerc.jpg" alt="imagem exercício" class="img-fluid">
             </div>
             <div class="col-sm-8">
-                <h1>Compras da Semana</h1>
+                <h1>Herbie: Controle de Serviços</h1>
                 <form>
-                    <p><label for="inNome">Produto</label>
-                    <input class="form-control" type="text" id="inProduto" required autofocus></p>
-                    <p><input type="submit" value="Adicionar" class="btn btn-primary">
-                    <input type="button" value="Limpar Lista" id="btLimpar" class="btn btn-danger"></p>
+                    <p><label for="inServico">Serviço - Veículo</label>
+                    <input class="form-control" type="text" id="inServico" required autofocus></p>
+                    <p><input type="submit" value="Adicionar Serviço" class="btn btn-primary">
+                    <input type="button" value="Executar Serviço" id="btExecutar" class="btn btn-danger"></p>
                 </form>
-                <pre></pre>
+                <h3 class="text-sm-end">Serviços Pendentes: <span id="inPendentes" class="text-danger"></span> </h3>
+                <h5 class="bg-success text-white">Serviço em Execução:</h5>
+                <pre class="fw-bold fst-italic text-center"></pre>
             </div>
         </div>
     </div>
-    <script src="./js/resp9_b.js"></script>
+    <script src="./js/resp9_c.js"></script>
 </body>
 
 </html>
