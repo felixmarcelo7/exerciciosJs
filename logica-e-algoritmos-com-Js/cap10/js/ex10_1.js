@@ -105,3 +105,96 @@ window.addEventListener("load", () => {
     });
   }
 });
+
+/*
+frm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const tarefa = frm.inTarefa.value;
+  const h5 = document.createElement("h5");
+  const texto = document.createTextNode(tarefa);
+  h5.appendChild(texto);
+  dvQuadro.appendChild(h5);
+
+  frm.inTarefa.value = "";
+  frm.inTarefa.focus();
+});
+
+let cont = 0;
+
+frm.btSelecionar.addEventListener("click", () => {
+  const tarefas = document.querySelectorAll("h5");
+  const lestIndex = tarefas.length - 1;
+
+  if (tarefas.length == 0) {
+    alert("Não há tarefas para selecionar"); //se não há tarefas, exibe alerta
+    return; //e retorna
+  }
+
+  if (tarefas[lestIndex].className == "tarefa-selecionada") {
+    tarefas[lestIndex].className = "tarefa-normal";
+  }
+
+  tarefas[cont].className = "tarefa-selecionada";
+
+  if (cont != 0) {
+    tarefas[cont - 1].className = "tarefa-normal";
+  }
+
+  if (cont == lestIndex) {
+    cont = -1;
+  }
+
+  cont++;
+});
+
+frm.btRetirar.addEventListener("click", () => {
+  const tarefas = document.querySelectorAll("h5");
+
+  let aux = -1;
+  tarefas.forEach((tarefa, i) => {
+    if (tarefa.className == "tarefa-selecionada") {
+      aux = i;
+    }
+  });
+
+  if (aux == -1) {
+    alert("Selecione uma tarefa para remover...");
+    return;
+  }
+
+  if (confirm(`Confirmar exclusão da tarefa ${tarefas[aux].innerText}?`)) {
+    dvQuadro.removeChild(tarefas[aux]);
+    cont = 0;
+  }
+});
+
+frm.btGravar.addEventListener("click", () => {
+  const tarefas = document.querySelectorAll("h5");
+
+  let dados = "";
+  tarefas.forEach((tarefa) => {
+    dados += tarefa.innerText + ";";
+  });
+
+  if (tarefas.length == 0) {
+    alert("Não há tarefas para gravar");
+    localStorage.removeItem("tarefas");
+    return;
+  }
+
+  localStorage.setItem("tarefas", dados.slice(0, -1));
+  alert("Ok, Lista Gravada");
+});
+
+window.addEventListener("load", () => {
+  const tarefas = localStorage.getItem("tarefas").split(";");
+
+  tarefas.forEach((tarefa) => {
+    const h5 = document.createElement("h5");
+    const texto = document.createTextNode(tarefa);
+    h5.appendChild(texto);
+    dvQuadro.appendChild(h5);
+  });
+});
+*/
