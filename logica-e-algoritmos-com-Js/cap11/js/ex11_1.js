@@ -36,8 +36,8 @@ const somaApostas = (numCavalo) => { // soma as apostas feitas no cavalo escolhi
 };
 
 const validaCavalo = (numCavalo) => { // se a aposta for em um número maior que o de cavalos retorna falso
-    
-    if(numCavalo  <= CAVALOS.length && numCavalo > 0) {
+
+    if (numCavalo <= CAVALOS.length && numCavalo > 0) {
         return true;
     }
 
@@ -70,13 +70,13 @@ frm.inCavalo.addEventListener("blur", () => {
     //mostra o nome do cavalo que vai ser apostado e o total de apostas
     const numCavalo = Number(frm.inCavalo.value);
 
-    if(numCavalo == "") {
+    if (numCavalo == "") {
         respCavalo.innerText = "";
         return;
     }
 
-    if(!validaCavalo(numCavalo)) {
-        alert(`Número inválido. Tente novamente! Apenas ${CAVALOS.length} cavalos no páreo` );
+    if (!validaCavalo(numCavalo)) {
+        alert(`Número inválido. Tente novamente! Apenas ${CAVALOS.length} cavalos no páreo`);
         respCavalo.innerText = "";
         return;
     }
@@ -85,3 +85,23 @@ frm.inCavalo.addEventListener("blur", () => {
     respCavalo.innerText += ` R$: ${somaApostas(numCavalo).toFixed(2)})`;
 });
 
+frm.btResumo.addEventListener("click", () => {
+    const somaApostas = [];
+
+    for (let i = 0; i < CAVALOS.length; i++) {
+        somaApostas.push(0);
+    }
+
+    for (const aposta of apostas) {
+        const { numCavalo, valAposta } = aposta;
+        somaApostas[numCavalo - 1] += valAposta;
+    }
+
+    let resumoApostas = `Nº Cavalo.............. R$ Apostado\n${"-".repeat(35)}\n`;
+
+    CAVALOS.forEach((cavalo, i) => {
+        resumoApostas += `${i + 1} ${cavalo.padEnd(20)} ${somaApostas[i].toFixed(2).padStart(11)}\n`;
+    });
+
+    listaCavalos.innerText = resumoApostas;
+});
