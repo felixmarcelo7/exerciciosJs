@@ -105,3 +105,32 @@ frm.btResumo.addEventListener("click", () => {
 
     listaCavalos.innerText = resumoApostas;
 });
+
+frm.btGanhador.addEventListener("click", () => {
+    const ganhador = Number((prompt("Nº do Cavalo Ganhador: ")));
+
+    if (isNaN(ganhador) || !validaCavalo(ganhador)) {
+        alert("Número de Cavalo Inválido!");
+        return;
+    }
+    //soma o valor total das apostas
+    const totApostas = apostas.reduce((acc, aposta) => acc += aposta.valAposta, 0);
+
+    let resumo = `Resultado Fnal do Páreo\n${"-".repeat(25)}\n`;
+
+    resumo += `Nº Total de Apostas: ${apostas.length}\n`;
+    resumo += `Total Geral R$: ${totApostas.toFixed(2)}\n\n`;
+
+    resumo += `Ganhador Nº ${ganhador} - ${CAVALOS[ganhador - 1]}\n\n`;
+
+    resumo += `Nº de Apostas: ${quantApostas(ganhador)}\n`;
+    resumo += `Total Apostado R$: ${somaApostas(ganhador).toFixed(2)}`;
+
+    listaCavalos.innerText = resumo;
+
+    frm.btAposta.disabled = true;
+    frm.btGanhador.disabled = true;
+    frm.btNovo.focus();
+});
+
+frm.btNovo.addEventListener("click", () => window.location.reload()); //recarreg a página
