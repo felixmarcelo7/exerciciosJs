@@ -72,8 +72,35 @@ frm.addEventListener("submit", (e) => {
 
   imgPoltrona.src = "img/reservada.jpg";
 
-  reservadas.push(poltrona);
+  if (!reservadas.includes(poltrona)) {
+    reservadas.push(poltrona);
+  }
 
   frm.inPoltrona.value = "";
   frm.inPoltrona.focus();
+});
+
+frm.inConfirmar.addEventListener("click", () => {
+  if (reservadas.length == 0) {
+    alert("Não há poltronas reservadas");
+    frm.inPoltrona.focus();
+    return;
+  }
+
+  const ocupadas = localStorage.getItem("teatroOcupadas")
+    ? localStorage.getItem("teatroOcupadas").split(";")
+    : [];
+
+  //for decrscente, pois as reservas vão sendo excluidas a cada alteração da imagem
+  for (let i = reservadas.length - 1; i >= 0; i--) {
+    ocupadas.push(reservadas[i]);
+
+    const imgPoltrona = dvPalco.querySelectorAll("img")[reservadas[i] - 1];
+
+    imgPoltrona.src = "img/ocupada.jpg";
+
+    reservadas.pop();
+  }
+
+  localStorage.setItem("teatroOcupadas", ocupadas.join(";"));
 });
