@@ -36,4 +36,3 @@ frm.addEventListener("submit", (e) => {
   frm.reset();
   frm.inPalavra.focus();
 });
-
