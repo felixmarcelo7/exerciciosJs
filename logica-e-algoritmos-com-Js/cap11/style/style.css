@@ -5,3 +5,4 @@ figure {display: inline-block; font-size: 0.7em; margin: 5px;}
 img.poltrona {width: 24px; height: 16px;}
 .entre-letras {letter-spacing: 0.5em;}
 i {cursor: pointer;}
+.corFundo { background-color: rgb(96, 218, 157);}
