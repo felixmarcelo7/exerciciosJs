@@ -56,6 +56,9 @@ frm.btVerDica.addEventListener("click", () => {
   respDica.innerText = " * " + dicaSorteada; //exibe a dica
   respErros.innerText += "*"; //acrescenta "*" nos erros
 
+  const chances = Number(respChances.innerText) - 1; //diminui 1 em chances
+  respChances.innerText = chances; //mostra o n° de chances
+
   trocarStatus(chances); //troca imagem
 
   verificarFim(); //verifica se atingiu limite de chances
@@ -107,3 +110,26 @@ frm.addEventListener("submit", (e) => {
   frm.inLetra.value = "";
   frm.inLetra.focus();
 });
+
+const verificarFim = () => {
+  const chances = Number(respChances.innerText); //obtém número de chances
+
+  if (chances == 0) {
+    respMensagemFinal.className = "display-3 text-danger";
+    respMensagemFinal.innerText = `Ah...é ${palavraSorteada}. Você Perdeu!`;
+    concluirJogo();
+  } else if (respPalavra.innerText == palavraSorteada) {
+    respMensagemFinal.className = "display-3 text-primary";
+    respMensagemFinal.innerText = "Parabéns!! Você Ganhou.";
+    trocarStatus(4); //exibe a figura do "rostinho feliz"
+    concluirJogo();
+  }
+};
+
+//modifica o texto da daica e desabilita os botões de jogar
+const concluirJogo = () => {
+  respDica.innerText = "* Clique no botão 'Iniciar Jogo' para jogar novamente";
+  frm.inLetra.disabled = true;
+  frm.btJogar.disabled = true;
+  frm.btVerDica.disabled = true;
+};
