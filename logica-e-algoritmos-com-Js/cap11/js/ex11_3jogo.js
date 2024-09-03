@@ -28,7 +28,7 @@ window.addEventListener("load", () => {
   const numAleatorio = Math.floor(Math.random() * tam);
 
   //obtem palavra e(em letaras maiusculas) e dica na posição do n° aleatório gerado
-  palavraSorteada = palavras[numAleatorio].toLowerCase();
+  palavraSorteada = palavras[numAleatorio].toUpperCase();
   dicaSorteada = dicas[numAleatorio];
   let novaPalavra = ""; //para montar palavra exibida (com letra inicial e "_")\
 
@@ -43,4 +43,67 @@ window.addEventListener("load", () => {
   }
 
   respPalavra.innerText = novaPalavra; //exibe a palavra
+});
+
+frm.btVerDica.addEventListener("click", () => {
+  //verifica se o jogador já clicou anteriormente no botão
+  if (respErros.innerText.includes("*")) {
+    alert("Você já solicitou a dica....");
+    frm.inLetra.focus();
+    return;
+  }
+
+  respDica.innerText = " * " + dicaSorteada; //exibe a dica
+  respErros.innerText += "*"; //acrescenta "*" nos erros
+
+  trocarStatus(chances); //troca imagem
+
+  verificarFim(); //verifica se atingiu limite de chances
+
+  frm.inLetra.focus();
+});
+
+const trocarStatus = (num) => {
+  if (num > 0) imgStatus.src = `img/status${num}.jpg`;
+};
+
+frm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const letra = frm.inLetra.value.toUpperCase(); //obtém o conteúdo do campo inLetra
+
+  let erros = respErros.innerText; //obtém o conteúdo do campo inLetra
+  let palavra = respPalavra.innerText;
+
+  //verifica se a letra apostada já consta em erros ou na palavra
+  if (erros.includes(letra) || palavra.includes(letra)) {
+    alert("Você já apostou esta letra");
+    frm.inLetra.focus();
+    return;
+  }
+
+  //se letra consta em palavraSorteada
+  if (palavraSorteada.includes(letra)) {
+    let novaPalavra = ""; //para compoir novaPalavra
+    //for para montar a palavra a ser exibida
+    for (let i = 0; i < palavraSorteada.length; i++) {
+      //se igual a letra apostada, acrescenta esta letra na exibição
+      if (palavraSorteada.charAt(i) == letra) {
+        novaPalavra += letra;
+      } else {
+        novaPalavra += palavra.charAt(i); // senão, acrescenta letra ou "_" existente
+      }
+    }
+    respPalavra.innerText = novaPalavra; //exibe a novaPalavra
+  } else {
+    respErros.innerText += letra; //acrescenta letra aos erros
+    const chances = Number(respChances.innerText) - 1; //diminui n° de chances
+    respChances.innerText = chances; //exibe n° de chances
+
+    trocarStatus(chances); //troca imagem
+  }
+  verificarFim(); // ferifica se ja ganhou ou perdeu
+
+  frm.inLetra.value = "";
+  frm.inLetra.focus();
 });
