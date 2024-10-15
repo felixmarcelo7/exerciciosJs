@@ -1,25 +1,27 @@
+import { Link } from "react-router-dom";
+
 const MenuSuperior = () => {
   return (
     <nav className="navbar navbar-expand-sm bg-primary navbar-dark stricky-top">
       <div className="container">
-        <a className="navbar-brand" href="#">
+        <Link to="/" className="navbar-brand">
           Controle Pessoal de Livros
-        </a>
+        </Link>
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <Link to="/" className="nav-link">
               Inclusão
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <Link to="/manut" className="nav-link">
               Manutenção
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <Link to="/resumo" className="nav-link">
               Resumo
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
