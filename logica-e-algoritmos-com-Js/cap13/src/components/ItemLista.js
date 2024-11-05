@@ -1,21 +1,23 @@
 import "./ItemLista.css";
 
-const ItemLista = (props) => {
+const ItemLista = ({id, titulo, autor, ano, preco, foto, excluirClick, alterarClick}) => {
     return (
         <tr>
-            <td>{props.id}</td>
-            <td>{props.titulo}</td>
-            <td>{props.autor}</td>
-            <td>{props.ano}</td>
+            <td>{id}</td>
+            <td>{titulo}</td>
+            <td>{autor}</td>
+            <td>{ano}</td>
             <td className="text-end">
-                {Number(props.preco).toLocaleString("pt-br", {minimumFractionDigits: 2})}
+                {Number(preco).toLocaleString("pt-br", {minimumFractionDigits: 2})}
             </td>
             <td className="text-center">
-                <img src={props.foto} alt="Capa do Livro" width="75"></img>
+                <img src={foto} alt="Capa do Livro" width="75"></img>
             </td>
             <td className="text-center">
-                <i className="exclui text-danger fw-bold" title="Exclir">&#10008;</i>
-                <i className="altera text-success fw-bold ms-2" title="Alterar">&#36;</i>
+                <i className="exclui text-danger fw-bold" title="Exclir" 
+                    onClick={excluirClick}>&#10008;</i>
+                <i className="altera text-success fw-bold ms-2" title="Alterar"
+                    onClick={alterarClick}>&#36;</i>
             </td>
         </tr>
     );
